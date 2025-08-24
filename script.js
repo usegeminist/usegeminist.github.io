@@ -4,15 +4,12 @@ const apiKeyInput = document.getElementById('apiKey');
 
 
 saveKeyBtn.addEventListener('click', () => {
-localStorage.setItem('geminiApiKey', apiKeyInput.value);
-alert('API key saved');
+alert('ignore');
 });
 
 
 clearKeyBtn.addEventListener('click', () => {
-localStorage.removeItem('geminiApiKey');
-apiKeyInput.value = '';
-alert('API key cleared');
+alert('ignore');
 });
 
 
@@ -34,13 +31,6 @@ const text = input.value.trim();
 if (!text) return;
 
 
-const key = localStorage.getItem('geminiApiKey');
-if (!key) {
-alert('API key missing');
-return;
-}
-
-
 const model = document.getElementById('model').value;
 
 
@@ -49,7 +39,7 @@ input.value = '';
 
 
 try {
-const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
+const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=AIzaSyDySdjLJSfzEv8ZvBr_sZsf7LTo2WVrggg`, {
 method: 'POST',
 headers: { 'Content-Type': 'application/json' },
 body: JSON.stringify({ contents: [{ parts: [{ text }] }], generationConfig: { temperature: parseFloat(temperature.value) } })
